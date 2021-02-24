@@ -76,6 +76,8 @@
 
         var filterMax = reportParameters.filterMax;
 
+		var maxIterations = reportParameters.maxIterations
+
         //var filterTable = reportParameters.filterTable;
 		
 		var filtersList = Array(0);
@@ -386,7 +388,12 @@
             //display counter            
 
             loadCounter++;
-
+			
+			// Add iterations support
+			if(maxIterations != undefined && loadCounter === maxIterations + 1){
+				report.off("rendered");
+				divCounter.innerHTML = divCounter.innerHTML + "<br/> Done Iterating!"
+			}
 
 /*
             var divCounter = document.getElementById('LoadReportCounter');
